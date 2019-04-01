@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+
+   <div class="row">
+     <h1 class="text-center">{{project.name}}</h1>
+     <img style ='background-color:darkgrey'; src="{{projects.image.url}}" class="img-thumbnail" alt="Procts" data-toggle="modal" data-target="#{{project.id}}">
+   </div>
+
+   <div class="row">
+     {% autoescape on %}
+     {{project.post| safe}}
+    {% endautoescape %}
+
+   </div>
+
+   <div class="row">
+     <p>Posted {{project.pub_date|timesince}} by {{project.user.first_name}}</p>
+   </div>
+
+ </div>
+
+ {% endblock %}

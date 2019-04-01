@@ -54,7 +54,7 @@ def new_projects(request):
             projects = form.save(commit=False)
             projects.user = current_user
             projects.save()
-        return redirect('todaysProjects')
+        return redirect('projectsToday')
 
     else:
         form = NewProjectsForm()
