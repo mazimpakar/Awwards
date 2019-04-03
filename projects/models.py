@@ -26,7 +26,7 @@ class Ratings(models.Model):
     
            
 
-class Projects(models.Model):
+class Project(models.Model):
     image = models.ImageField(upload_to='images/', blank=True)
     title = models.CharField(max_length =30 )
     description = models.TextField(null = True)
@@ -34,24 +34,23 @@ class Projects(models.Model):
     user = models.ForeignKey(User,null=True)
     
     def __str__(self):
-        return self.name
+        return self.title
 
-    def save_projects(self):
+    def save_images(self):
         self.save()   
 
-    def delete_projects(self):
+    def delete_images(self):
     	self.delete()
     @classmethod
-    def all_projects(cls):
-        projects = cls.objects.all()
-        return projects
+    def all_images(cls):
+        images = cls.objects.all()
+        return images
 
     @classmethod
-    def get_projects(cls, id):
-        projects = cls.objects.get(id=id)
-        return project
-    def __str__(self):
-    	return self.user.username
+    def get_images(cls, id):
+        images = cls.objects.get(id=id)
+        return image
+    
    
     @classmethod
     def search_by_title(cls,search_term):
