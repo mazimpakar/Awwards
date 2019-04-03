@@ -14,10 +14,10 @@
   <div class="row">
 
   {% if projects %}
-    {% for project in projects %}
+    {% for image in projects %}
       <div class="col-sm-6 col-md-3">
-          <h2 style="color:rgb(56, 3, 66);">{{projects.name}}</h2>
-          <img src="{{projects.image.url}}"  class="img-responsive" alt="">
+          <h2 style="color:rgb(56, 3, 66);">{{projects.title}}</h2>
+          <img src="{{image.image.url}}"  class="img-responsive" alt="">
           <strong>Design:</strong> {{project.design}}
           <br>
           <strong>Usability:</strong>{{project.usability}}
