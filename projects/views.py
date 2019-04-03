@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 import datetime as dt
-from .models import Projects 
+from .models import Project 
 from .forms import NewProjectsForm
 # from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
@@ -10,14 +10,11 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/accounts/login/')
 def projects_today(request):
     date = dt.date.today()
-    all_projects = Projects.all_projects()
-    projects= Projects.objects.all()
-    print(projects)
+    all_projects = Project.objects.all()
+    # projects= Projects.objects.all()
+    print(all_projects)
     
-#     if request.method == 'POST':
-        
-        
-#         form = NewProjectsForm()
+
     return render(request, 'today_projects.html', {"date": date, "projects":all_projects})
 
 
@@ -25,12 +22,12 @@ def projects_today(request):
 
 def search_results(request):
 
-    if 'projects' in request.GET and request.GET["projects"]:
-        search_term = request.GET.get("projects")
-        searched_projects = Projects.search_by_title(search_term)
+    if 'project' in request.GET and request.GET["project"]:
+        search_term = request.GET.get("project")
+        searched_images = Project.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"projects": searched_projects})
+        return render(request, 'search.html',{"message":message,"projects": searched_images})
 
     else:
         message = "You haven't searched for any term"
