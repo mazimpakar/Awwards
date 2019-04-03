@@ -2,20 +2,24 @@
 {% block content %} 
 {{ block.super}}
 {% load bootstrap3 %}
-<div class="container" >
-
+<div class="container" style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg2d9UudnZ3PIsR13pejGHCKKHAk79_X5OfmfyU1p0fdscokXAnQ);background-size:cover;width: 1500px">
  
  
   <div class="row">
    
     <!--Display photos images  -->
-    {%for project in projects%}
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" style="margin-bottom: 20px;">
-      {%if image%}
-      <img style = background-color:teal; src="{{project.images.url}}">
-      {%else%}
-      <p>no Projects</p>
-      {%endif%}
+    {%for image in projects%}
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" style="margin-bottom: 25px;">
+     
+      <img style = 'margin-top: 25px; margin-bottom: 25px; width:500px; height:480px;padding: 100px'; src="{{image.image.url}}">
+     
+      {% autoescape on %}
+      <strong>Description: </strong>{{image.description|safe}}
+      <br>
+      <strong>Link: </strong><a href="{{image.links|safe}}">{{image.links|safe}}</a>         
+    {% endautoescape %}
+      
+      
     </div>
 {%endfor%}
   </div>
@@ -24,3 +28,5 @@
 </div>
 
 {% endblock %}
+
+
