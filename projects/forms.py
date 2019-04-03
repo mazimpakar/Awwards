@@ -1,9 +1,9 @@
 from django import forms
-from .models import Projects,Profile
+from .models import Project,Profile
 
 class NewProjectsForm(forms.ModelForm):
     class Meta:
-        model = Projects
+        model = Project
         exclude = ['user', 'pub_date']
         widgets = {
             'profile': forms.CheckboxSelectMultiple(),
