@@ -9,8 +9,7 @@ class NewProjectsForm(forms.ModelForm):
             'profile': forms.CheckboxSelectMultiple(),
         }  
 class ProfileForm(forms.ModelForm):
-	model = Profile
-	username = forms.CharField(label='Username',max_length = 30)
-	
-	bio = forms.CharField(label='Image Title',max_length=500)
-	projects = forms.CharField(max_length =30)        
+	class Meta:
+		model = Profile
+		
+		exclude = ['user']       
