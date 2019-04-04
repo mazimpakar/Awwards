@@ -47,4 +47,4 @@ Install dependancies that will create an environment for the app to run pip3 ins
  copyright (c) 2019 Mazimpaka M.Rose
 
 ## Licence
- This software mazimpakar/awwardsapplicationgit is licensed under the MIT License
+ This software mazimpakar/awwards application is licensed under the MIT License
