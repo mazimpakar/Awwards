@@ -5,14 +5,27 @@ from tinymce.models import HTMLField
 # Create your models here.
 
 class Profile(models.Model):
+    username = models.CharField(default='User',max_length=80)
     picture = models.ImageField(upload_to='images/', blank=True)
-    bio = models.CharField(max_length =30)
-    projects = models.CharField(max_length =30)
-    contacts = models.CharField(max_length =30)
+    bio = HTMLField()
+    # projects = models.ForeignKey(User,null=True)
+    name = models.CharField(max_length=30)
     user = models.ForeignKey(User,null=True)
 
     def __str__(self):
-        return self.bio
+        return self.name
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()
+
+    @classmethod
+    def get_profiles(cls):
+        profiles = cls.objects.all()
+        return profiles
+   
 class tags(models.Model):
     name = models.CharField(max_length =30)
     def __str__(self):
