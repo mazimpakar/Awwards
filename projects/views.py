@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 import datetime as dt
-from .models import Project 
-from .forms import NewProjectsForm
+from .models import Project ,User
+from .forms import NewProjectsForm,ProfileForm
 # from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -27,7 +27,7 @@ def search_results(request):
         searched_images = Project.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"projects": searched_images})
+        return render(request, 'search.html',{"message":message,"images": searched_images})
 
     else:
         message = "You haven't searched for any term"
@@ -56,3 +56,26 @@ def new_projects(request):
     else:
         form = NewProjectsForm()
     return render(request, 'new_projects.html', {"form": form,"current_user":current_user,"title":title})
+      
+@login_required(login_url='/accounts/login/')
+def myPicture(request,id):
+    user = User.objects.get(id = id)
+    # profiles = Profile.objects.get(user = user)
+   
+    return render(request,'profile.html',{"user":user})
+
+@login_required(login_url='/accounts/login/')
+def Profile(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+
+            return redirect('projectsToday')
+
+    else:
+        form = ProfileForm()
+    return render(request, 'my_profile.html', {"form": form})
