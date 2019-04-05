@@ -33,13 +33,13 @@ class RatingTestClass(TestCase):
         self.assertTrue(isinstance(self.rose,Rating))
 
    
-# class ProfileTestClass(TestCase):
-#     # Set up method
-#     def setUp(self):
-#         self.rose= Profile( )
-#     # Testing  instance
-#     def test_instance(self):
-#         self.assertTrue(isinstance(self.rose,Profile))
+class ProfileTestClass(TestCase):
+    # Set up method
+    def setUp(self):
+        self.rose= Profile( )
+    # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.rose,Profile))
 
 #     # Testing Save Method
 #     def test_save_method(self):
