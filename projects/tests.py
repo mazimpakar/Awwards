@@ -4,17 +4,17 @@ from .models import Project,Profile,Rating
 class ProjectTestClass(TestCase):
 
     # Set up method
-    def setUp(self):
-        self.rose= Project()
-    # Testing  instance
-    def test_instance(self):
-        self.assertTrue(isinstance(self.rose,Project))
+    # def setUp(self):
+    #     self.rose= Project()
+    # # Testing  instance
+    # def test_instance(self):
+    #     self.assertTrue(isinstance(self.rose,Project))
 
-    # Testing Save Method
-    def test_save_method(self):
-        self.rose.save_project()
-        description= Project.objects.all()
-        self.assertTrue(len(description) > 0)
+    # # Testing Save Method
+    # def test_save_method(self):
+    #     self.rose.save_project()
+    #     description= Project.objects.all()
+    #     self.assertTrue(len(description) > 0)
 
     # def test_all_projets(self):
     #     self.wecode.all_projects()
