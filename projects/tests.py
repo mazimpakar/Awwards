@@ -16,21 +16,21 @@ class ProjectTestClass(TestCase):
         description= Project.objects.all()
         self.assertTrue(len(description) > 0)
 
-    def test_all_projets(self):
-        self.rose.all_projects()
-        title=Project.objects.all()
-        self.assertTrue(len(title) > 0)
+    # def test_all_projets(self):
+    #     self.rose.all_projects()
+    #     title=Project.objects.all()
+    #     self.assertTrue(len(title) > 0)
         
 
   
        
-# class RatingTestClass(TestCase):
-#     # Set up method
-#     def setUp(self):
-#         self.rose= Rating()
-#     # Testing  instance
-#     def test_instance(self):
-#         self.assertTrue(isinstance(self.rose,Rating))
+class RatingTestClass(TestCase):
+    # Set up method
+    def setUp(self):
+        self.rose= Rating()
+    # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.rose,Rating))
 
    
 # class ProfileTestClass(TestCase):
